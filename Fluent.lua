@@ -35,7 +35,7 @@ corner.CornerRadius = UDim.new(1, 0)
 local imageButton = Instance.new("ImageButton", frame)
 imageButton.Size = UDim2.new(1, 0, 1, 0)
 imageButton.BackgroundTransparency = 1
-imageButton.Image = "rbxassetid://125832198759078"
+imageButton.Image = "rbxassetid://73303647486659"
 
 local isVisible = true
 imageButton.MouseButton1Click:Connect(function()
