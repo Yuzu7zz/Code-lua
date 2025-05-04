@@ -1,8 +1,8 @@
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Fluent " .. Fluent.Version,
-    SubTitle = "by dawid",
+    Title = "kyntho " .. Fluent.Version,
+    SubTitle = "by Seraph | offline",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
@@ -35,7 +35,7 @@ corner.CornerRadius = UDim.new(1, 0)
 local imageButton = Instance.new("ImageButton", frame)
 imageButton.Size = UDim2.new(1, 0, 1, 0)
 imageButton.BackgroundTransparency = 1
-imageButton.Image = "rbxassetid://73303647486659"
+imageButton.Image = "rbxassetid://95700154638902"
 
 local isVisible = true
 imageButton.MouseButton1Click:Connect(function()
@@ -80,10 +80,24 @@ game:GetService("UserInputService").InputChanged:Connect(function(input)
 end)
 
 Tabs.Main:AddToggle("MyToggle", {
-    Title = "Toggle",
-    Description = "Toggle description",
+    Title = "kill aura",
+    Description = "open When you are map bloxfuit",
     Default = false,
-    Callback = function(state)
-        print(state and "Toggle On" or "Toggle Off")
+    Callback = function(Value)
+    KillAura = Value
+
+    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+
+    while KillAura do
+        task.wait()
+        pcall(function()
+            for _, enemy in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                local humanoid = enemy:FindFirstChildOfClass("Humanoid")
+                if humanoid and humanoid.Health > 0 then
+                    humanoid.Health = 0
+                end
+            end
+        end)
     end
+end
 })
